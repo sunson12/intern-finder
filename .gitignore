@@ -34,3 +34,5 @@ Thumbs.db
 
 # Logs
 *.log
+# Daily logs (contains personal info)
+daily-logs/
