@@ -31,9 +31,9 @@ for temp in [0.0, 0.7, 1.5]:
     print(f"\n── Temperature = {temp} ──")
     for i in range(3):
         llm = ChatOpenAI(
-            model="qwen3.7-max",
-            base_url=os.getenv("QWEN_BASE_URL"),
-            api_key=os.getenv("QWEN_API_KEY"),
+            model="deepseek-v4-pro",
+            base_url=os.getenv("DEEPSEEK_BASE_URL"),
+            api_key=os.getenv("DEEPSEEK_API_KEY"),
             temperature=temp,
         )
         resp = llm.invoke(prompt)
@@ -57,11 +57,11 @@ planning_prompt = '你是一个 AI Agent。用户问"帮我规划一个杭州三
 
 for temp, label in [(0.0, "低温 0.0（Planning 用）"), (0.7, "中温 0.7（通用）")]:
     llm = ChatOpenAI(
-        model="qwen3.7-max",
-        base_url=os.getenv("QWEN_BASE_URL"),
-        api_key=os.getenv("QWEN_API_KEY"),
-        temperature=temp,
-    )
+            model="deepseek-v4-pro",
+            base_url=os.getenv("DEEPSEEK_BASE_URL"),
+            api_key=os.getenv("DEEPSEEK_API_KEY"),
+            temperature=temp,
+        )
     resp = llm.invoke(planning_prompt)
     print(f"\n{label}：")
     print(resp.content[:200])
@@ -78,23 +78,24 @@ stop_prompt = """列出 5 个 AI Agent 框架的名称和一句话描述：
 
 # 不加 stop：模型会输出全部 5 个
 llm = ChatOpenAI(
-    model="qwen3.7-max",
-    base_url=os.getenv("QWEN_BASE_URL"),
-    api_key=os.getenv("QWEN_API_KEY"),
-    temperature=0,
-)
+            model="deepseek-v4-pro",
+            base_url=os.getenv("DEEPSEEK_BASE_URL"),
+            api_key=os.getenv("DEEPSEEK_API_KEY"),
+            temperature=temp,
+        )
 print("\n不加 Stop Sequence：")
 resp = llm.invoke(stop_prompt)
 print(resp.content[:150])
 
 # 加 stop=["3."]：模型输出到 "3." 之前就停止
 llm_stop = ChatOpenAI(
-    model="qwen3.7-max",
-    base_url=os.getenv("QWEN_BASE_URL"),
-    api_key=os.getenv("QWEN_API_KEY"),
-    temperature=0,
-    stop=["3."],  # 遇到 "3." 立即停止
-)
+            model="deepseek-v4-pro",
+            base_url=os.getenv("DEEPSEEK_BASE_URL"),
+            api_key=os.getenv("DEEPSEEK_API_KEY"),
+            temperature=temp,
+            stop=["3."],  # 遇到 "3." 立即停止
+        )
+
 print("\n加了 stop=['3.']：")
 resp_stop = llm_stop.invoke(stop_prompt)
 print(resp_stop.content)
