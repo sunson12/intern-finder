@@ -33,8 +33,10 @@
   # 练习文件：projects/hello-agent/day02_cot.py
   ```
 - [ ] 完成练习代码
-- 对比有/无 CoT 的输出差异：
+- COT的作用：
+  面试时如果有人问你"怎么提高 LLM 推理准确率"，CoT 是第一个要说的答案。记住这句：
 
+  "加一句 Let's think step by step 就能显著提升推理准确率——这是 Wei et al. 2022 论文验证过的，成本为零，效果显著，是 Prompt Engineering 的第一条原则。"
 #### 2.3 ReAct Prompting（25min）
 - 概念：Thought → Action → Observation 循环的 Prompt 模板
 - 练习：手写一个最小 ReAct Prompt 模板（不依赖 LangChain）

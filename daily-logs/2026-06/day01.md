@@ -139,7 +139,6 @@ result = chain.invoke({
 })
 print(result)
 ```
-3. 
 
 ## 🔮 明日计划
 - 深入学习 Prompt Engineering（Few-shot / CoT / ReAct / 结构化输出）

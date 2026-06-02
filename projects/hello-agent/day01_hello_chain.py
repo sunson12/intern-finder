@@ -9,11 +9,19 @@ from langchain_openai import ChatOpenAI
 load_dotenv()  # 自动读取项目根目录的 .env 文件
 
 # DeepSeek 兼容 OpenAI 格式
+# llm = ChatOpenAI(
+#     model="deepseek-chat",
+#     api_key=os.getenv("DEEPSEEK_API_KEY"),
+#     base_url="https://api.deepseek.com/v1",
+# )
+
+# qwen 兼容 OpenAI 格式
 llm = ChatOpenAI(
-    model="deepseek-chat",
-    api_key=os.getenv("DEEPSEEK_API_KEY"),
-    base_url="https://api.deepseek.com/v1",
+    model="qwen3.6-plus",
+    api_key=os.getenv("QWEN_API_KEY"),
+    base_url="https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1",
 )
+
 
 # 最简单的调用
 response = llm.invoke("用一句话解释什么是 AI Agent")
